@@ -3,7 +3,6 @@ import react from "@vitejs/plugin-react"
 import { defineConfig, loadEnv } from "vite"
 import inspect from "vite-plugin-inspect"
 
-// https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd())
 
@@ -16,9 +15,6 @@ export default defineConfig(({ mode }) => {
   const DISABLE_SELLERS_REGISTRATION =
     env.VITE_DISABLE_SELLERS_REGISTRATION || "false"
 
-  /**
-   * Add this to your .env file to specify the project to load admin extensions from.
-   */
   const MEDUSA_PROJECT = env.VITE_MEDUSA_PROJECT || null
   const sources = MEDUSA_PROJECT ? [MEDUSA_PROJECT] : []
 
@@ -42,6 +38,11 @@ export default defineConfig(({ mode }) => {
     },
     server: {
       open: true,
+    },
+    preview: {
+      host: true, // allows external access
+      port: parseInt(env.PORT) || 4173,
+      allowedHosts: ['all'], // OR list specific domains like "v-eotc.onrender.com"
     },
     optimizeDeps: {
       entries: [],
