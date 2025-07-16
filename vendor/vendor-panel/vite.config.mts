@@ -42,7 +42,7 @@ export default defineConfig(({ mode }) => {
     preview: {
       host: true, // allows external access
       port: parseInt(env.PORT) || 4173,
-      allowedHosts: ['all'], // OR list specific domains like "v-eotc.onrender.com"
+      allowedHosts: ['v2-x96g.onrender.com'], // OR list specific domains like "v-eotc.onrender.com"
     },
     optimizeDeps: {
       entries: [],
